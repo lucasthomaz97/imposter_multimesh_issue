@@ -1,0 +1,39 @@
+[gd_resource type="ShaderMaterial" load_steps=7 format=3 uid="uid://d1hsf0b8fc28b"]
+
+[ext_resource type="Shader" path="res://tree_bushes.gdshader" id="1_4sq6p"]
+[ext_resource type="Texture2D" uid="uid://bp5bim4ftx71l" path="res://texture1_256px.png" id="2_8h8ek"]
+
+[sub_resource type="Gradient" id="Gradient_36rmw"]
+interpolation_mode = 1
+offsets = PackedFloat32Array(0.307692, 0.516484, 0.89011)
+colors = PackedColorArray(0.04708, 0.11, 0.0242, 1, 0.08988, 0.21, 0.0462, 1, 0.06848, 0.16, 0.0352, 1)
+
+[sub_resource type="GradientTexture1D" id="GradientTexture1D_dgpta"]
+gradient = SubResource("Gradient_36rmw")
+width = 32
+
+[sub_resource type="Curve" id="Curve_g5k1j"]
+_data = [Vector2(0, 0.139623), 0.0, 2.06425, 0, 0, Vector2(0.495455, 0.607547), -0.0448752, -0.0448752, 0, 0, Vector2(1, 0.169811), -2.21384, 0.0, 0, 0]
+point_count = 3
+
+[sub_resource type="CurveTexture" id="CurveTexture_jsgri"]
+width = 32
+curve = SubResource("Curve_g5k1j")
+
+[resource]
+render_priority = 0
+shader = ExtResource("1_4sq6p")
+shader_parameter/alpha_scissor_threshold = 0.5
+shader_parameter/texture_albedo = ExtResource("2_8h8ek")
+shader_parameter/gradient_texture = SubResource("GradientTexture1D_dgpta")
+shader_parameter/noise_texture = SubResource("CurveTexture_jsgri")
+shader_parameter/WindScale = 1.0
+shader_parameter/WindSpeed = 1.0
+shader_parameter/WindStr = 3.5
+shader_parameter/WindDensity = 5.0
+shader_parameter/WindDirection = Vector3(1, 0, 1)
+shader_parameter/deactivate_global_variation = false
+shader_parameter/clamp_top = 1.0
+shader_parameter/clamp_bottom = -1.0
+shader_parameter/uv1_scale = Vector3(1, 1, 1)
+shader_parameter/uv1_offset = null
